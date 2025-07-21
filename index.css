@@ -64,7 +64,7 @@ button:hover {
     justify-content: space-between;
 }
 
-.display{
+.display {
     background-color: #273549;
     width: 211px;
     height: 40px;
@@ -80,3 +80,13 @@ button:hover {
     font-size: 16px;   
 }
 
+.display:hover {
+    background-color: var(--display-hover-background-color);
+    cursor: default;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

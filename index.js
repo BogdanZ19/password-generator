@@ -12,6 +12,13 @@ let generateBtn = document.querySelector("#generate-btn")
 let pass1 = ""
 let pass2 = ""
 
+let isHidden = ""
+
+display1.style.setProperty('--display-hover-background-color', '#273549')
+display2.style.setProperty('--display-hover-background-color', '#273549')
+
+
+
 function getRandomChar() {
     return characters[Math.floor(Math.random() * characters.length)]
 }
@@ -21,19 +28,34 @@ function generatePassword() {
     for (let i = 0; i < 15; i++) {
         password += getRandomChar()
     }
+    isHidden = document.getElementById("hide-check").checked
     return password
 }
 
 function copyOnClick(item) {
-    let copyText = item.textContent
+    let copyText = ""
+    if (item.id[item.id.length - 1] == 1)
+        copyText = pass1
+    if (item.id[item.id.length - 1] == 2)
+        copyText = pass2
     navigator.clipboard.writeText(copyText)
-    
 }
 
 
 generateBtn.addEventListener("click", () => {
-    display1.textContent = generatePassword()
-    display2.textContent = generatePassword()
+    pass1 = generatePassword()
+    pass2 = generatePassword()
+
+    if (isHidden) {
+        display1.textContent = "***************"
+        display2.textContent = "***************"
+    } else {
+        display1.textContent = pass1
+        display2.textContent = pass2
+    }
+
+    display1.style.setProperty('--display-hover-background-color', 'gray')
+    display2.style.setProperty('--display-hover-background-color', 'gray')
 })
 
 
@@ -46,6 +68,4 @@ display2.addEventListener("click", () => {
 
 
 
-//1 2 3 4 5
-//0 1 2 3 4
 
